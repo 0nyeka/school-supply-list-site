@@ -14,11 +14,16 @@ const inputFieldEl = document.getElementById("input-field")
 const shoppingListEl = document.getElementById("shopping-list")
 const tipEl = document.getElementById("tip")
 
+
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
-
-    push(shoppingListInDB, inputValue)
-    clearInputField(inputFieldEl)
+    
+    if(inputValue === "") {
+        addButtonEl.disable = true
+    }else {
+        push(shoppingListInDB, inputValue)
+        clearInputField(inputFieldEl)
+    }
 })
 
 onValue(shoppingListInDB, function(snapshot) {
